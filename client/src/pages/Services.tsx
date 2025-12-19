@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Check } from "lucide-react";
+import labImage1 from "@assets/stock_images/laboratory_equipment_ed12d2a2.jpg";
+import labImage2 from "@assets/stock_images/laboratory_equipment_713597ab.jpg";
+import labImage3 from "@assets/stock_images/laboratory_equipment_74301ee1.jpg";
 
 export default function Services() {
   return (
@@ -36,9 +39,9 @@ export default function Services() {
               </Link>
             </div>
             <div className="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl shadow-slate-200">
-              {/* Unsplash: scientist holding sample tube */}
+              {/* Sample Analysis */}
               <img 
-                src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=800"
+                src={labImage1}
                 alt="Sample Analysis" 
                 className="w-full h-full object-cover aspect-video md:aspect-auto md:h-[400px]"
               />
@@ -48,9 +51,9 @@ export default function Services() {
           {/* Service 2 */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-2xl overflow-hidden shadow-xl shadow-slate-200">
-              {/* Unsplash: microscope view mineral */}
+              {/* Mineralogy */}
               <img 
-                src="https://images.unsplash.com/photo-1576359573859-9942a3f91599?auto=format&fit=crop&q=80&w=800"
+                src={labImage2}
                 alt="Mineralogy" 
                 className="w-full h-full object-cover aspect-video md:aspect-auto md:h-[400px]"
               />
@@ -90,9 +93,9 @@ export default function Services() {
               </Link>
             </div>
             <div className="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl shadow-slate-200">
-              {/* Unsplash: industrial chemical plant interior */}
+              {/* Metallurgical Testing */}
               <img 
-                src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800"
+                src={labImage3}
                 alt="Metallurgy" 
                 className="w-full h-full object-cover aspect-video md:aspect-auto md:h-[400px]"
               />

@@ -2,6 +2,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Microscope, Layers, Activity } from "lucide-react";
 import { motion } from "framer-motion";
+import labHero from "@assets/stock_images/laboratory_equipment_169f9813.jpg";
+import mineralSample from "@assets/stock_images/laboratory_equipment_956e0ccc.jpg";
 
 export default function Home() {
   return (
@@ -9,9 +11,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative bg-slate-50 overflow-hidden">
         <div className="absolute inset-0 z-0">
-           {/* Unsplash: scientific laboratory modern blue light */}
+           {/* Lab Hero Background */}
            <img 
-            src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=2000"
+            src={labHero}
             alt="Laboratory background" 
             className="w-full h-full object-cover opacity-15"
           />
@@ -97,9 +99,9 @@ export default function Home() {
           </ul>
         </div>
         <div className="h-64 md:h-auto relative">
-          {/* Unsplash: mining mineral rocks close up */}
+          {/* Mineral samples */}
           <img 
-            src="https://images.unsplash.com/photo-1618331835717-801e976710b2?auto=format&fit=crop&q=80&w=1000"
+            src={mineralSample}
             alt="Mineral samples" 
             className="absolute inset-0 w-full h-full object-cover"
           />
