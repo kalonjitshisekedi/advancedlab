@@ -2,8 +2,8 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Microscope, Layers, Activity } from "lucide-react";
 import { motion } from "framer-motion";
-import labHero from "@assets/stock_images/laboratory_equipment_169f9813.jpg";
-import mineralSample from "@assets/stock_images/laboratory_equipment_956e0ccc.jpg";
+import labHero from "@assets/stock_images/chemical_engineering_f5230271.jpg";
+import mineralSample from "@assets/stock_images/chemical_engineering_406733f0.jpg";
 
 export default function Home() {
   return (

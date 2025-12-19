@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Check } from "lucide-react";
-import labImage1 from "@assets/stock_images/laboratory_equipment_ed12d2a2.jpg";
-import labImage2 from "@assets/stock_images/laboratory_equipment_713597ab.jpg";
-import labImage3 from "@assets/stock_images/laboratory_equipment_74301ee1.jpg";
+import labImage1 from "@assets/stock_images/chemical_engineering_f154cdd5.jpg";
+import labImage2 from "@assets/stock_images/chemical_engineering_c0ee4af4.jpg";
+import labImage3 from "@assets/stock_images/chemical_engineering_97d30012.jpg";
 
 export default function Services() {
   return (
