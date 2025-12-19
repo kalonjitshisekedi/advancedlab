@@ -1,0 +1,33 @@
+# Goal
+Create a professional, SEO-friendly static website for Advanced Lab Solutions, a mineral processing laboratory, that can be hosted on AWS. The website should include multiple HTML pages with CSS styling, image placeholders for logo and other visual assets, and drawing inspiration from similar laboratory or technical service company websites.
+
+# Return format
+The assistant should provide:
+- A complete file structure with 3-5 HTML pages (home, services, about, contact, and optionally capabilities or case studies)
+- A single CSS stylesheet with professional styling suitable for a lab/technical services company
+- Basic responsive design that works on desktop and mobile
+- Image placeholders clearly marked for logo, hero images, and service/capability visuals
+- SEO-friendly HTML structure including meta tags, proper heading hierarchy, alt text for images, and semantic HTML elements
+- Ready-to-deploy code that requires no build process or dependencies
+- File organization that is clear and can be directly uploaded to AWS S3 or similar hosting
+- Contact information including phone number (+27) and email (advancedlabs.co.za domain reference)
+
+# Warnings
+- Avoid overly complex animations or heavy JavaScript that could slow down static hosting
+- Ensure all links are relative paths so pages work correctly when deployed to AWS
+- Do not include backend functionality, databases, or server-side code
+- Keep the design professional but simple—avoid trends that may appear dated quickly
+- Ensure contact forms are static HTML only (note that form submission will require AWS Lambda or third-party service if functionality is needed)
+- Do not make assumptions about specific services offered—keep content generic enough to be customized, or use placeholder text clearly marked for editing
+- All image placeholders must be clearly labeled with dimensions and purpose (e.g., "Logo: 200x100px", "Hero Image: 1200x400px")
+- Ensure proper SEO implementation: use descriptive page titles, meta descriptions, heading tags (H1, H2, H3), and alt text for all images
+
+# Context
+- Company: Advanced Lab Solutions (mineral processing laboratory)
+- Industry: Laboratory/Technical Services
+- Hosting: AWS (S3 or similar static hosting)
+- Complexity level: Simple and functional, not fancy
+- Scope: A few pages with HTML and CSS only
+- Contact: Phone number with +27 country code, website domain advancedlabs.co.za
+- Reference: Draw inspiration from similar mineral processing, laboratory, or technical service company websites for layout, tone, and structure
+- SEO Requirements: The website must be optimized for search engines with proper meta tags, semantic HTML, mobile responsiveness, fast load times, and accessibility standards
