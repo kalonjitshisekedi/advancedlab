@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import furnaceImage from "@assets/stock_images/industrial_furnace_p_f14e2bba.jpg";
 
 export default function About() {
   return (
@@ -36,10 +37,10 @@ export default function About() {
               </ul>
             </div>
             <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden shadow-lg">
-               {/* Unsplash: team of scientists meeting */}
+               {/* Industrial Furnace Image */}
                <img 
-                src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800"
-                alt="Team working" 
+                src={furnaceImage}
+                alt="Industrial furnace processing minerals" 
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
