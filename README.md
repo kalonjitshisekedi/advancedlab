@@ -1,6 +1,6 @@
-# Advanced Lab Solutions - AWS S3 Deployment Guide
+# Advanced Lab Solutions - GitHub Pages Deployment Guide
 
-A professional mineral processing laboratory website built with React, TypeScript, and Vite. This guide provides step-by-step instructions for deploying to AWS S3 with CloudFront and custom domain support.
+A professional mineral processing laboratory website built with React, TypeScript, and Vite. This guide provides step-by-step instructions for deploying to GitHub Pages with custom GoDaddy domain support.
 
 ## Table of Contents
 
@@ -8,10 +8,8 @@ A professional mineral processing laboratory website built with React, TypeScrip
 - [Prerequisites](#prerequisites)
 - [Local Development](#local-development)
 - [Local Testing](#local-testing)
-- [Building for Production](#building-for-production)
-- [AWS Deployment](#aws-deployment)
+- [GitHub Pages Deployment](#github-pages-deployment)
 - [Domain Configuration](#domain-configuration)
-- [Monitoring and Alerts](#monitoring-and-alerts)
 
 ## Project Overview
 
@@ -122,6 +120,32 @@ npx http-server -p 8080
 - Browser DevTools testing
 
 **See [aws/LOCAL_TESTING.md](./aws/LOCAL_TESTING.md) for complete testing guide**
+
+## GitHub Pages Deployment
+
+**For complete GitHub Pages deployment guide, see: [GITHUB_PAGES_DEPLOYMENT.md](./GITHUB_PAGES_DEPLOYMENT.md)**
+
+**For quick 15-minute setup, see: [GITHUB_PAGES_QUICK_START.md](./GITHUB_PAGES_QUICK_START.md)**
+
+### Quick Summary
+
+GitHub Pages hosting is:
+- ✅ **Completely Free** - No costs ever
+- ✅ **Automatic Deployments** - Push to GitHub, site updates in 2-5 minutes
+- ✅ **Free HTTPS** - Automatic SSL certificate
+- ✅ **Custom Domain Support** - Works with GoDaddy
+- ✅ **No Maintenance** - GitHub handles everything
+
+### Deployment Steps
+
+1. Create GitHub repository (public)
+2. Update `vite.config.ts` with base path
+3. Add GitHub Actions workflow file
+4. Push to GitHub
+5. Configure custom domain on GoDaddy
+6. Done! Site auto-deploys on every push
+
+**See [GITHUB_PAGES_QUICK_START.md](./GITHUB_PAGES_QUICK_START.md) for detailed steps.**
 
 ## Building for Production
 
