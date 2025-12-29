@@ -6,10 +6,12 @@ Complete guide for deploying Advanced Lab Solutions to AWS S3.
 
 ### Main Documentation Files
 - ✅ **README.md** (4,000+ lines) - Complete reference guide
+- ✅ **aws/LOCAL_TESTING.md** - Testing on Linux, Mac & Windows
 - ✅ **aws/INDEX.md** - Documentation navigation
 - ✅ **aws/QUICK_START.md** - 15-minute CloudFormation deployment
 - ✅ **aws/DEPLOYMENT_GUIDE.md** - Detailed 7-phase manual setup
 - ✅ **aws/budget-setup.md** - Cost management & budgets guide
+- ✅ **DEPLOYMENT_CHECKLIST.md** - This file - pre-deployment checklist
 
 ### Infrastructure & Configuration
 - ✅ **aws/cloudformation-template.yaml** - Full Infrastructure as Code
@@ -321,7 +323,10 @@ After uploading:
 ## 📚 Documentation Quick Links
 
 ```
-Start Here:
+Test First (Recommended):
+└── aws/LOCAL_TESTING.md (Linux/Mac/Windows setup)
+
+Then Deploy:
 ├── aws/QUICK_START.md (15 min setup)
 ├── aws/INDEX.md (documentation map)
 └── aws/DEPLOYMENT_GUIDE.md (detailed steps)

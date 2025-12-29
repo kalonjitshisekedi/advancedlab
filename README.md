@@ -7,6 +7,7 @@ A professional mineral processing laboratory website built with React, TypeScrip
 - [Project Overview](#project-overview)
 - [Prerequisites](#prerequisites)
 - [Local Development](#local-development)
+- [Local Testing](#local-testing)
 - [Building for Production](#building-for-production)
 - [AWS Deployment](#aws-deployment)
 - [Domain Configuration](#domain-configuration)
@@ -92,6 +93,35 @@ npm run build
 # Database migrations (if needed)
 npm run db:push
 ```
+
+## Local Testing
+
+For detailed platform-specific testing guides (Linux, Mac, Windows), see **[aws/LOCAL_TESTING.md](./aws/LOCAL_TESTING.md)**
+
+### Quick Start
+
+```bash
+# 1. Development with hot reload
+npm run dev
+# Access: http://localhost:5000
+
+# 2. Production build testing
+npm run build
+cd dist
+npx http-server -p 8080
+# Access: http://localhost:8080
+```
+
+### Testing Coverage
+
+- Development server with hot reload
+- Production build verification
+- Cross-platform setup (Linux, Mac, Windows)
+- Port management and troubleshooting
+- Performance testing
+- Browser DevTools testing
+
+**See [aws/LOCAL_TESTING.md](./aws/LOCAL_TESTING.md) for complete testing guide**
 
 ## Building for Production
 

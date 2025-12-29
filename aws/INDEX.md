@@ -4,13 +4,26 @@ Complete guide for deploying Advanced Lab Solutions to AWS S3/CloudFront with cu
 
 ## 📚 Documentation Files
 
-### Start Here
+### Start Here (Before Deploying)
+- **[LOCAL_TESTING.md](./LOCAL_TESTING.md)** - Test locally first (recommended!)
+  - Setup for Linux, Mac, Windows
+  - Development & production testing
+  - Cross-platform instructions
+  - Troubleshooting guide
+
+### Deployment
 - **[QUICK_START.md](./QUICK_START.md)** - Deploy in 15 minutes using CloudFormation
   - Fastest path to production
   - Automated setup with one command
   - Best for most users
 
 ### Complete Guides
+- **[LOCAL_TESTING.md](./LOCAL_TESTING.md)** - Local testing on Linux, Mac & Windows
+  - Development server setup per platform
+  - Production build testing
+  - Platform-specific installation
+  - Troubleshooting guide
+
 - **[README.md](../README.md)** - Full reference guide (4000+ lines)
   - Project overview
   - Prerequisites and setup
