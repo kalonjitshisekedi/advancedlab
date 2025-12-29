@@ -13,6 +13,7 @@ export function Navbar() {
     { href: "/services", label: "Services" },
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact" },
+    { href: "/careers", label: "Careers" },
   ];
 
   return (
@@ -41,11 +42,6 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/contact">
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
-              Get a Quote
-            </Button>
-          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -74,9 +70,6 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <Button className="w-full">Get a Quote</Button>
-            </Link>
           </div>
         </div>
       )}

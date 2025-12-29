@@ -35,7 +35,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-slate-400">
               <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
               <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Request Quote</Link></li>
+              <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
             </ul>
           </div>
 
@@ -44,7 +44,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-0.5" />
-                <span>123 Industrial Park Way,<br />Johannesburg, South Africa</span>
+                <span>6 Knights Road,<br />Germiston, South Africa</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary" />
@@ -52,7 +52,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary" />
-                <span>info@advancedlabs.co.za</span>
+                <span>info@advlabsolution.co.za</span>
               </li>
             </ul>
           </div>

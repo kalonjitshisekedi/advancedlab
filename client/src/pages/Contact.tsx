@@ -57,9 +57,9 @@ export default function Contact() {
                   <div>
                     <p className="font-medium text-slate-900">Address</p>
                     <p className="text-slate-600 text-sm mt-1">
-                      123 Industrial Park Way<br />
-                      Sandton, Johannesburg<br />
-                      South Africa, 2196
+                      6 Knights Road<br />
+                      Germiston<br />
+                      South Africa
                     </p>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-slate-900">Email</p>
-                    <p className="text-slate-600 text-sm mt-1">info@advancedlabs.co.za</p>
+                    <p className="text-slate-600 text-sm mt-1">info@advlabsolution.co.za</p>
                   </div>
                 </div>
 

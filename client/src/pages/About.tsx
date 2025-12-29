@@ -20,7 +20,7 @@ export default function About() {
           <div className="prose prose-lg prose-slate text-slate-600 mb-16">
             <h2 className="text-3xl font-display font-bold text-slate-900">Our Mission</h2>
             <p>
-              Founded in 2010, Advanced Lab Solutions was established to bridge the gap between geological exploration and metallurgical processing. We believe that accurate data is the foundation of every successful mining operation.
+              Founded in 2019, Advanced Lab Solutions was established to bridge the gap between geological exploration and metallurgical processing. We believe that accurate data is the foundation of every successful mining operation.
             </p>
             <p>
               Our mission is to provide the mining industry with rapid, reliable, and high-quality analytical services that enable our clients to make informed decisions, optimize their processes, and maximize value recovery.
