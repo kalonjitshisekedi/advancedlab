@@ -1,217 +1,43 @@
-# Advanced Lab Solutions Website
+# Advanced Lab Solutions - Static Website
 
-Professional mineral processing laboratory website - pure HTML and CSS.
+Professional static website for Advanced Lab Solutions, a mineral processing laboratory based in Germiston, South Africa.
 
-## Overview
+## 🛠 How to Edit
 
-Advanced Lab Solutions is a professional website showcasing mineralogical and metallurgical testing services in South Africa.
+This is a simple static website built with **HTML** and **CSS**. No build process or complex installation is required.
 
-### Company Information
-- **Name**: Advanced Lab Solutions
-- **Location**: 6 Knights Road, Germiston, South Africa
-- **Founded**: 2019
-- **Email**: info@advlabsolution.co.za
-- **Careers Email**: career@advlabsolution.co.za
-- **Accreditation**: ISO/IEC 17025:2017
+1.  **Edit Content:** Open any `.html` file (e.g., `index.html`) in your editor and change the text within the tags.
+2.  **Edit Styles:** Open `styles.css` to modify colors, fonts, and layout.
+3.  **Images:** New images should be placed in `attached_assets/stock_images/`. To update an image on a page, change the `src` attribute in the HTML `<img>` tag or the `background-image` property in the inline style.
+4.  **Local Preview:** Use the "Run" button in Replit to start the web server and preview your changes.
 
-## Website Pages
+## 🚀 How to Deploy for FREE to GitHub Pages (with GoDaddy Domain)
 
-1. **Home** (index.html)
-   - Hero section with company tagline
-   - World-class services features
-   - Why choose us section
-   - Call-to-action
+GitHub Pages is the best free hosting solution for this static site.
 
-2. **Services** (services.html)
-   - Sample Analysis & Assaying
-   - Process Mineralogy
-   - Metallurgical Testing
+### Step 1: Create a GitHub Repository
+1.  Go to [GitHub](https://github.com) and create a new public repository named `advanced-lab-solutions`.
+2.  Upload all the files from this Replit project (except hidden system files) to that repository.
 
-3. **About** (about.html)
-   - Company mission
-   - Core values (Accuracy, Efficiency, Innovation)
-   - ISO 17025 accreditation
+### Step 2: Enable GitHub Pages
+1.  In your GitHub repository, go to **Settings** > **Pages**.
+2.  Under **Build and deployment** > **Source**, select **Deploy from a branch**.
+3.  Select the `main` branch and `/ (root)` folder, then click **Save**.
 
-4. **Contact** (contact.html)
-   - Contact form
-   - Business hours
-   - Address, phone, email
+### Step 3: Connect your GoDaddy Domain
+1.  In the same **GitHub Pages settings** page, find the **Custom domain** section.
+2.  Enter your GoDaddy domain (e.g., `advlabsolution.co.za`) and click **Save**.
+3.  GitHub will provide you with DNS records to add. Usually, this includes:
+    *   **A records** pointing to GitHub's IPs: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
+    *   A **CNAME record** for `www` pointing to `[your-username].github.io`.
+4.  Log in to your **GoDaddy DNS Management** console and add these records.
+5.  Once DNS propagates (up to 24 hours), check "Enforce HTTPS" on the GitHub Pages settings page.
 
-5. **Careers** (careers.html)
-   - Laboratory Manager position
-   - Job requirements
-   - Apply instructions
-
-## Technology Stack
-
-- **HTML5** - Semantic markup
-- **CSS3** - Responsive design
-- **Images** - Real professional stock images
-- **No frameworks** - Pure HTML & CSS
-- **No build process** - Works immediately
-
-## Features
-
-✅ **Fully Responsive** - Mobile, tablet, desktop
-✅ **Professional Design** - Modern and clean
-✅ **Real Images** - Laboratory and equipment photos
-✅ **Accessible** - Semantic HTML
-✅ **Fast Loading** - No dependencies
-✅ **SEO Optimized** - Meta tags and structure
-✅ **British English** - "optimise", "colour", etc.
-
-## Quick Start
-
-### Run Locally
-
-**Python (easiest):**
-```bash
-python3 -m http.server 8000
-# Visit: http://localhost:8000
-```
-
-**Node.js:**
-```bash
-npm install -g http-server
-http-server
-# Visit: http://localhost:8080
-```
-
-**VS Code:**
-1. Install Live Server extension
-2. Right-click `index.html`
-3. Select "Open with Live Server"
-
-See `LOCAL_DEVELOPMENT.md` for detailed guide.
-
-### Deploy to GitHub Pages
-
-1. Create GitHub repository
-2. Push code: `git push origin main`
-3. Enable GitHub Pages in settings
-4. Configure custom domain on GoDaddy
-5. Done! Site is live
-
-See `GITHUB_PAGES_DEPLOYMENT.md` for step-by-step instructions.
-
-## File Structure
-
-```
-advanced-lab-solutions/
-├── index.html              Home page
-├── services.html           Services listing
-├── about.html             About company
-├── contact.html           Contact form
-├── careers.html           Job listings
-├── styles.css             All styling
-├── attached_assets/
-│   └── stock_images/      Professional images
-│       ├── chemical_engineering_*.jpg
-│       ├── industrial_furnace_*.jpg
-│       └── laboratory_equipment_*.jpg
-├── LOCAL_DEVELOPMENT.md    Local setup guide
-├── GITHUB_PAGES_DEPLOYMENT.md  Deployment guide
-└── README.md              This file
-```
-
-## Editing
-
-### Edit HTML Content
-1. Open any `.html` file with text editor
-2. Update text, links, or structure
-3. Save file
-4. Refresh browser
-
-### Edit Styling
-1. Open `styles.css`
-2. Update CSS rules
-3. Save file
-4. Refresh browser
-
-### Add/Update Images
-1. Place image in `attached_assets/stock_images/`
-2. Reference in HTML: `<img src="attached_assets/stock_images/image.jpg" alt="Description">`
-3. Save and refresh
-
-## Documentation
-
-- **LOCAL_DEVELOPMENT.md** - Running the site locally
-  - How to start local server
-  - Troubleshooting guide
-  - Testing checklist
-  - Development tips
-
-- **GITHUB_PAGES_DEPLOYMENT.md** - Deploying to GitHub Pages
-  - Step-by-step deployment
-  - Custom domain setup with GoDaddy
-  - Making updates
-  - Troubleshooting
-
-## Browser Support
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-## Performance
-
-- **Page Load**: < 2 seconds
-- **Image Optimization**: Compressed JPG files
-- **CSS Size**: 25KB (minified)
-- **No JavaScript**: Fast rendering
-
-## SEO
-
-- Semantic HTML5 structure
-- Meta descriptions
-- Proper heading hierarchy
-- Alt text on images
-- Mobile responsive
-
-## Cost
-
-**FREE!**
-- GitHub Pages: $0
-- Domain: Already owned
-- Hosting: GitHub (unlimited)
-- SSL/HTTPS: Automatic
-
-## Contact
-
-For inquiries about the business:
-- Email: info@advlabsolution.co.za
-- Careers: career@advlabsolution.co.za
-- Address: 6 Knights Road, Germiston, South Africa
-- Hours: Mon-Fri 8:00 AM - 5:00 PM
-
-## Getting Started
-
-1. **Local Development**
-   ```bash
-   python3 -m http.server 8000
-   ```
-   See `LOCAL_DEVELOPMENT.md`
-
-2. **Deploy Online**
-   Follow `GITHUB_PAGES_DEPLOYMENT.md`
-
-3. **Update Content**
-   Edit HTML/CSS, commit, push
-   Updates appear automatically
-
-## License
-
-All content © 2024 Advanced Lab Solutions. All rights reserved.
-
-## Version History
-
-- **v1.0** - Initial HTML/CSS conversion from React
-  - 5 complete pages
-  - Professional styling
-  - Real images
-  - GitHub Pages ready
-
----
-
-**Ready to go live?** See `GITHUB_PAGES_DEPLOYMENT.md` for deployment steps.
+## Project Structure
+- `index.html`: Home page
+- `services.html`: Services page
+- `about.html`: About page
+- `contact.html`: Contact page
+- `careers.html`: Careers page
+- `styles.css`: Global styling
+- `attached_assets/stock_images/`: Professional industry images
