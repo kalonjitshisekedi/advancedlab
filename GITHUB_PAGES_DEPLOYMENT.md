@@ -5,556 +5,448 @@ Complete guide for deploying Advanced Lab Solutions to GitHub Pages with custom 
 ## Why GitHub Pages?
 
 ✅ **Completely Free** - No costs ever
-✅ **Fast & Reliable** - CDN-backed hosting
-✅ **Easy Setup** - Just push to GitHub
+✅ **Automatic HTTPS** - Free SSL certificate
+✅ **Fast & Reliable** - GitHub's infrastructure
+✅ **Easy Updates** - Git push = site updates
 ✅ **Custom Domain** - Works with GoDaddy
-✅ **HTTPS** - Free SSL/TLS certificate
 ✅ **No Maintenance** - GitHub handles everything
 
 ## Prerequisites
 
 1. **GitHub Account** (free at https://github.com)
-2. **Git** installed on your computer
-3. **Project repository** on GitHub
-4. **GoDaddy Domain** (or any domain registrar)
-5. **Node.js 20+** for local testing
+2. **Git installed** on your computer
+3. **Project code locally** (all HTML, CSS, images)
+4. **GoDaddy Domain** (already registered)
 
-## Step 1: Prepare Your Repository
+## Step-by-Step Deployment
 
-### 1.1 Create GitHub Repository
+### Step 1: Create GitHub Repository (5 minutes)
 
 1. Go to https://github.com/new
-2. Name: `advanced-lab-solutions` (or any name)
-3. Choose **Public** (required for free GitHub Pages)
-4. Create repository
+2. **Repository name**: `advanced-lab-solutions`
+3. **Description**: "Professional mineral processing laboratory website"
+4. Choose **Public** (required for free GitHub Pages)
+5. Click **Create repository**
 
-### 1.2 Update Vite Configuration
+You now have an empty repository ready for your code.
 
-GitHub Pages serves from `username.github.io/repository-name` by default.
+### Step 2: Prepare Your Local Project (2 minutes)
 
-**Edit `vite.config.ts`:**
+Make sure your project folder contains:
 
-```typescript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
-
-export default defineConfig({
-  plugins: [react()],
-  base: '/advanced-lab-solutions/',  // ← Add this line
-  server: {
-    port: 5000,
-    host: '0.0.0.0'
-  },
-  build: {
-    outDir: 'dist',
-    sourcemap: false
-  },
-  resolve: {
-    alias: {
-      '@assets': path.resolve(__dirname, './attached_assets')
-    }
-  }
-})
+```
+advanced-lab-solutions/
+├── index.html
+├── services.html
+├── about.html
+├── contact.html
+├── careers.html
+├── styles.css
+└── attached_assets/
+    └── stock_images/
+        ├── chemical_engineering_*.jpg
+        ├── industrial_furnace_*.jpg
+        └── laboratory_equipment_*.jpg
 ```
 
-### 1.3 Initialize Git Repository
+### Step 3: Initialize Git & Push Code (5 minutes)
+
+Open terminal/command prompt in your project folder:
 
 ```bash
-# Navigate to your project
-cd advanced-lab-solutions
-
-# Initialize git (if not already done)
+# Initialize git repository
 git init
 
-# Add remote repository
-git remote add origin https://github.com/YOUR_USERNAME/advanced-lab-solutions.git
-
-# Verify remote
-git remote -v
-```
-
-## Step 2: Build & Deploy
-
-### 2.1 Build Your Site
-
-```bash
-# Install dependencies (if not already done)
-npm install
-
-# Build for production
-npm run build
-
-# Verify dist/ folder created
-ls -la dist/
-```
-
-Expected output:
-```
-dist/
-├── index.html
-├── error.html (optional)
-└── assets/
-    ├── index-*.js
-    ├── index-*.css
-    └── [images]
-```
-
-### 2.2 Deploy to GitHub Pages
-
-#### Option A: Using GitHub Actions (Recommended - Automatic)
-
-This automatically deploys every time you push to GitHub.
-
-**Create `.github/workflows/deploy.yml`:**
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'dist'
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-**Push to GitHub:**
-
-```bash
 # Add all files
 git add .
 
-# Commit
-git commit -m "Initial commit with GitHub Actions deployment"
+# Create first commit
+git commit -m "Initial website commit - HTML and CSS"
 
-# Push to main branch
-git push origin main
+# Add remote repository (replace USERNAME with your GitHub username)
+git remote add origin https://github.com/USERNAME/advanced-lab-solutions.git
+
+# Verify it worked
+git remote -v
+
+# Push code to GitHub
+git branch -M main
+git push -u origin main
 ```
 
-GitHub will automatically build and deploy your site!
+**What this does:**
+- Creates git repository
+- Stages all your files
+- Commits with message
+- Connects to GitHub
+- Pushes code online
 
-#### Option B: Manual Deployment (One-time)
+**If you get an error:**
+- Make sure USERNAME matches your GitHub username
+- Repository must be created on GitHub first
+- Try again after creating repo
 
-If you prefer to build and deploy manually:
-
-```bash
-# 1. Build the site
-npm run build
-
-# 2. Deploy the dist folder
-# Using gh-pages CLI:
-npm install -g gh-pages
-gh-pages -d dist
-```
-
-### 2.3 Enable GitHub Pages
+### Step 4: Enable GitHub Pages (3 minutes)
 
 1. Go to your repository on GitHub
-2. Click **Settings** (top-right)
-3. Click **Pages** (left sidebar)
-4. Under "Source", select:
-   - Branch: `gh-pages`
-   - Folder: `/ (root)`
+2. Click **Settings** (top-right area)
+3. Left sidebar → Click **Pages**
+4. Under "Build and deployment":
+   - **Source**: Select "Deploy from a branch"
+   - **Branch**: Select `main`
+   - **Folder**: Select `/ (root)`
 5. Click **Save**
 
-Your site will be live at: `https://YOUR_USERNAME.github.io/advanced-lab-solutions/`
-
-## Step 3: Add Custom Domain (GoDaddy)
-
-### 3.1 Point Domain to GitHub Pages
-
-**On GoDaddy:**
-
-1. Go to **DNS Management** for your domain
-2. Add these DNS records:
-
-**Type A Records:**
-```
-Record Type: A
-Name: @
-Value: 185.199.108.153
-TTL: 1 hour
-
-Record Type: A
-Name: @
-Value: 185.199.109.153
-
-Record Type: A
-Name: @
-Value: 185.199.110.153
-
-Record Type: A
-Name: @
-Value: 185.199.111.153
-```
-
-**Type CNAME Record (for www subdomain):**
-```
-Record Type: CNAME
-Name: www
-Value: YOUR_USERNAME.github.io
-TTL: 1 hour
-```
-
-**Result:**
-```
-yourdomain.co.za         → GitHub Pages (A records)
-www.yourdomain.co.za     → GitHub Pages (CNAME)
-```
-
-### 3.2 Configure GitHub Pages with Domain
-
-1. Go to repository **Settings** → **Pages**
-2. Under "Custom domain", enter: `yourdomain.co.za`
-3. Click **Save**
-4. Check "Enforce HTTPS" (wait ~5 minutes for certificate)
-
 GitHub will automatically:
-- Create a `CNAME` file in your repository
-- Generate free SSL/TLS certificate
-- Redirect `www` to domain automatically
+- Build your site
+- Deploy to GitHub Pages
+- Provide a public URL
 
-### 3.3 Verify Domain Works
+**Your site is now live at:**
+```
+https://USERNAME.github.io/advanced-lab-solutions/
+```
 
-**Test DNS:**
+Test it! Visit that URL in your browser.
+
+### Step 5: Add Custom Domain (10 minutes)
+
+#### Part A: Update GoDaddy DNS
+
+1. Log in to GoDaddy
+2. Go to **Domains** → Select your domain
+3. Click **DNS** (or "DNS Management")
+
+**Add A Records** (these point your domain to GitHub):
+
+Click "Add" and add these 4 records:
+
+| Type | Host | Points to | TTL |
+|------|------|-----------|-----|
+| A | @ | 185.199.108.153 | 1 hour |
+| A | @ | 185.199.109.153 | 1 hour |
+| A | @ | 185.199.110.153 | 1 hour |
+| A | @ | 185.199.111.153 | 1 hour |
+
+**Add CNAME Record** (for www subdomain):
+
+| Type | Host | Points to | TTL |
+|------|------|-----------|-----|
+| CNAME | www | USERNAME.github.io | 1 hour |
+
+**Result after DNS changes:**
+- `yourdomain.com` → GitHub Pages
+- `www.yourdomain.com` → GitHub Pages
+
+#### Part B: Configure GitHub Pages
+
+1. Go back to your GitHub repository
+2. **Settings** → **Pages**
+3. Under "Custom domain":
+   - Enter: `yourdomain.com` (without www)
+   - Click **Save**
+
+GitHub will:
+- Create a `CNAME` file in your repo
+- Start checking DNS setup
+- Generate HTTPS certificate (~5 minutes)
+
+**Wait 5-10 minutes** for DNS to propagate.
+
+#### Part C: Verify & Enable HTTPS
+
+1. Refresh GitHub Pages settings
+2. You should see: "Your site is live at https://yourdomain.com"
+3. Check ✓ **Enforce HTTPS** (once available)
+
+**DNS Propagation Time:**
+- Usually 5-30 minutes
+- Sometimes up to 24 hours
+- Check status: https://dnschecker.org
+
+## Your Site is Live!
+
+**Visit:**
+- `https://yourdomain.com` ← Your custom domain
+- `https://www.yourdomain.com` ← Also works
+- `https://USERNAME.github.io/advanced-lab-solutions/` ← GitHub default
+
+All three URLs work!
+
+## Making Updates
+
+### Update Your Site
+
+When you make changes locally:
+
 ```bash
-# Resolve your domain
-nslookup yourdomain.co.za
-dig yourdomain.co.za
+# Make edits to HTML/CSS files
+# (edit in your text editor)
 
-# Should show GitHub Pages IPs:
-# 185.199.108.153
-# 185.199.109.153
-# 185.199.110.153
-# 185.199.111.153
-```
-
-**Test in Browser:**
-```
-https://yourdomain.co.za        ✓ Should work
-https://www.yourdomain.co.za    ✓ Should redirect to yourdomain.co.za
-https://YOUR_USERNAME.github.io/advanced-lab-solutions/  ✓ Also works
-```
-
-## Step 4: Automated Deployments
-
-### Every Push Deploys Automatically
-
-The GitHub Actions workflow deploys your site automatically:
-
-```bash
-# Edit a file
-# Commit and push
+# Stage changes
 git add .
-git commit -m "Update Services page"
-git push origin main
 
-# GitHub automatically:
-# 1. Builds your site (npm run build)
-# 2. Deploys to GitHub Pages
-# 3. Your site updates in ~2-5 minutes
+# Commit changes
+git commit -m "Update services page description"
+
+# Push to GitHub
+git push origin main
 ```
 
-### No Manual Deployment Needed!
+**That's it!** GitHub automatically:
+- Detects the push
+- Rebuilds your site
+- Deploys to live URL
+- Updates in 1-2 minutes
 
-You never have to run deployment commands again. Just:
+### Update Content Examples
+
+**Change company email:**
 ```bash
+# Edit any HTML file
+# Find: info@advlabsolution.co.za
+# Replace: newemail@example.com
 git add .
-git commit -m "Your changes"
+git commit -m "Update company email"
 git push origin main
 ```
 
-## Updating Your Site
-
-### Daily Development
-
+**Update service description:**
 ```bash
-# 1. Make changes locally
-npm run dev
-# Test at http://localhost:5000
-
-# 2. When satisfied:
+# Edit services.html
+# Update service text
 git add .
-git commit -m "Add new feature"
+git commit -m "Update service descriptions"
 git push origin main
-
-# 3. GitHub deploys automatically (2-5 minutes)
 ```
 
-### Version Control Best Practices
-
+**Add new image:**
 ```bash
-# See what changed
-git status
-
-# See detailed changes
-git diff
-
-# Commit only specific files
-git add client/src/pages/Services.tsx
-git commit -m "Update Services page description"
-
-# View commit history
-git log --oneline
-
-# Revert a commit if needed
-git revert <commit-hash>
+# Add image to attached_assets/stock_images/
+# Reference in HTML: <img src="attached_assets/stock_images/newimage.jpg">
+git add .
+git commit -m "Add new equipment image"
 git push origin main
 ```
 
 ## Troubleshooting
 
-### Site Not Updating After Push
+### Domain Not Working
 
-**Issue**: You pushed but site hasn't updated
-
-**Solution:**
-1. Wait 2-5 minutes (GitHub Actions takes time)
-2. Check Actions tab on GitHub:
-   - Go to repository → Actions
-   - Look for your recent push
-   - If orange circle → still building
-   - If green checkmark → deployed
-   - If red X → build failed, see error logs
-
-3. Clear browser cache (Ctrl+Shift+Delete or Cmd+Shift+Delete)
-4. Check your site URL
-
-### Domain Not Resolving
-
-**Issue**: Domain doesn't point to site
+**Problem**: Domain shows "connection refused" or default GitHub page
 
 **Solution:**
+1. Verify DNS records on GoDaddy
+   - All 4 A records must point to 185.199.x.x
+   - CNAME for www must point to USERNAME.github.io
+2. Wait 24 hours for full DNS propagation
+3. Check: https://dnschecker.org (paste your domain)
+4. Clear browser cache (Ctrl+Shift+Delete)
+
+**Test:**
 ```bash
-# Check DNS setup
-nslookup yourdomain.co.za
+# Check if DNS is set up correctly
+nslookup yourdomain.com
+dig yourdomain.com
 
-# Should return GitHub Pages IPs
-# If not, wait 24-48 hours for DNS propagation
+# Should show GitHub Pages IPs
 ```
-
-**On GoDaddy:**
-1. Go to DNS Management
-2. Verify A records point to GitHub (185.199.x.x)
-3. Verify CNAME for www points to YOUR_USERNAME.github.io
-4. If changed, wait 24-48 hours for propagation
 
 ### HTTPS Not Working
 
-**Issue**: Site shows "Not Secure"
+**Problem**: Site shows "Not Secure" in browser
 
 **Solution:**
-1. Wait ~5 minutes after setting domain
-2. Check "Enforce HTTPS" in GitHub Pages settings
-3. Clear browser cache
-4. If still not working, remove and re-add domain:
-   - GitHub Settings → Pages → Remove custom domain
-   - Wait 5 minutes
-   - Add custom domain again
+1. Wait 5-10 minutes after adding domain
+2. Refresh GitHub Pages settings
+3. Check "Enforce HTTPS" once available
+4. Clear browser cache
+
+**If still not working:**
+1. Remove custom domain from GitHub settings
+2. Wait 5 minutes
+3. Re-add custom domain
+4. Wait for HTTPS certificate
+
+### Site Shows Old Content
+
+**Problem**: Changes don't appear after push
+
+**Solution:**
+1. Verify changes were committed: `git log`
+2. Verify push succeeded: `git push origin main`
+3. Wait 2-3 minutes for GitHub to rebuild
+4. Clear browser cache (Ctrl+Shift+Delete)
+5. Hard refresh: Ctrl+Shift+R (Cmd+Shift+R on Mac)
+
+**Check GitHub status:**
+1. Go to repository
+2. Click **Actions** tab
+3. Look for your recent commit
+4. Green checkmark = successful deploy
+5. Red X = build failed, see error logs
 
 ### 404 Error on Pages
 
-**Issue**: Pages work on root but not at /about etc.
+**Problem**: Links give 404 errors
 
 **Solution:**
-Make sure your `vite.config.ts` has correct base path:
-
-```typescript
-export default defineConfig({
-  base: '/advanced-lab-solutions/',  // Must match repo name
-  // ... rest of config
-})
-```
-
-Then rebuild:
-```bash
-npm run build
-git add .
-git commit -m "Fix base path"
-git push origin main
-```
+1. Check HTML file exists (e.g., services.html)
+2. Verify link is correct: `<a href="services.html">`
+3. Don't use `/services.html` (absolute path)
+4. File names are case-sensitive: `Services.html` ≠ `services.html`
+5. Test locally first before pushing
 
 ### Images Not Loading
 
-**Issue**: Images show broken in production
+**Problem**: Images show broken icon
 
 **Solution:**
-1. Check images are in `client/public/` folder
-2. Images must be referenced correctly:
-   - In code: `import logo from '@assets/logo.png'`
-   - In HTML: `<img src="/advanced-lab-solutions/images/file.png" />`
-3. Verify image files exist in `dist/assets/` after build
+1. Verify image exists in `attached_assets/stock_images/`
+2. Check path in HTML is correct
+3. Use forward slashes: `attached_assets/stock_images/image.jpg`
 4. Clear browser cache
+5. Check file permissions (can read)
 
-### Large Files Slow to Deploy
+## File Structure for GitHub Pages
 
-**Issue**: Push takes too long or GitHub Actions times out
+Your repository will look like:
 
-**Solution:**
-1. Keep images optimized (< 1 MB per image)
-2. Don't commit `node_modules/` (add to `.gitignore`)
-3. Don't commit `dist/` before pushing (build on GitHub instead)
-
-**Check `.gitignore`:**
 ```
-node_modules/
-dist/
-.env
-.DS_Store
+advanced-lab-solutions/
+├── .git/                    (created by git)
+├── CNAME                    (created by GitHub)
+├── index.html
+├── services.html
+├── about.html
+├── contact.html
+├── careers.html
+├── styles.css
+├── attached_assets/
+│   └── stock_images/
+│       ├── chemical_engineering_*.jpg
+│       ├── industrial_furnace_*.jpg
+│       └── laboratory_equipment_*.jpg
+└── [documentation files - optional]
+    ├── LOCAL_DEVELOPMENT.md
+    ├── GITHUB_PAGES_DEPLOYMENT.md
+    ├── README.md
+    └── etc.
 ```
 
-## Performance Optimization
+## Best Practices
 
-### Reduce Bundle Size
+### Git Commits
+- Commit frequently (after each change)
+- Write clear commit messages
+- Example: `"Update contact email"` not `"changes"`
 
-GitHub Pages is fast, but smaller is better:
+### Version Control
+- Always commit before making big changes
+- Check `git status` before pushing
+- Can revert to previous versions if needed
 
+### Testing
+1. Test locally first: `python3 -m http.server 8000`
+2. Check all pages, links, images
+3. Test on mobile (DevTools)
+4. Then push to GitHub
+5. Verify live site
+
+### Domain Management
+- Keep DNS records for 24+ months
+- Renew domain before expiration
+- Update CNAME if GitHub Pages IPs change
+- Keep GoDaddy account secure
+
+## Security Notes
+
+- GitHub Pages is HTTPS (secure)
+- Your code is public (on GitHub)
+- Don't commit sensitive data (keys, passwords)
+- Contact form needs backend (use Formspree or similar)
+
+## Ongoing Maintenance
+
+### Regular Updates
 ```bash
-# Build and check size
-npm run build
-
-# Check sizes
-ls -lh dist/assets/
-
-# Typical sizes:
-# index-*.js:  40-80 KB
-# index-*.css: 5-15 KB
-```
-
-### Enable Compression
-
-GitHub Pages automatically serves:
-- Gzip compression
-- HTTPS/TLS
-- CDN edge caching
-
-No configuration needed!
-
-### Monitor Performance
-
-Test your site:
-- https://pagespeed.web.dev/ - Google PageSpeed
-- https://gtmetrix.com/ - Detailed metrics
-- https://webpagetest.org/ - In-depth testing
-
-## Cost Comparison
-
-| Platform | Monthly Cost | Setup Time |
-|----------|------------|-----------|
-| **GitHub Pages** | **FREE** | 15 min |
-| AWS Free Tier | ~$0.50 | 30-60 min |
-| Netlify Free | FREE | 10 min |
-| Shared Hosting | $5-15 | 1 hour |
-| VPS | $5+ | 2+ hours |
-
-**GitHub Pages is completely free forever!**
-
-## What You Have
-
-✅ Free hosting on GitHub Pages
-✅ Free custom domain setup (GoDaddy DNS)
-✅ Free HTTPS/SSL certificate
-✅ Automatic deployments via GitHub Actions
-✅ Version control with Git
-✅ History of all changes
-✅ Easy rollback if needed
-
-## Workflow Summary
-
-```
-Edit Files Locally
-        ↓
-Test with: npm run dev
-        ↓
+# Every time you change something
+git add .
+git commit -m "Describe your changes"
 git push origin main
-        ↓
-GitHub Actions builds automatically
-        ↓
-Site deploys to yourdomain.co.za (2-5 min)
-        ↓
-Visit your live site!
 ```
 
-## Next Steps
+### Backup
+```bash
+# Clone your repo as backup
+git clone https://github.com/USERNAME/advanced-lab-solutions.git backup
+```
 
-1. **Create GitHub Repository**
-   - https://github.com/new
+### Monitor Site
+- Check GitHub **Actions** tab for deploy status
+- Visit your domain regularly to verify
+- Monitor Analytics (if enabled)
 
-2. **Update Vite Config**
-   - Set `base: '/advanced-lab-solutions/'`
+## FAQ
 
-3. **Add GitHub Actions Workflow**
-   - Create `.github/workflows/deploy.yml`
+**Q: How long do updates take to appear?**
+A: Usually 1-2 minutes. Sometimes up to 5 minutes. Check GitHub Actions for status.
 
-4. **Push to GitHub**
-   - `git push origin main`
+**Q: Can I have multiple domains?**
+A: Yes. Use CNAME file for primary domain, then set additional domains in registrar.
 
-5. **Configure Domain**
-   - Add DNS records on GoDaddy
-   - Set custom domain in GitHub Pages
+**Q: What if I accidentally break something?**
+A: Use `git revert <commit-hash>` to undo changes. All history is saved.
 
-6. **Verify Live**
-   - Check https://yourdomain.co.za
+**Q: Can I use a subdomain?**
+A: Yes. Set CNAME for subdomain to USERNAME.github.io, or use DNS CNAME/A records.
 
-## Support Resources
+**Q: Is there a limit on how many times I can push?**
+A: No. Push as often as you want. No limits on free GitHub Pages.
 
-- **GitHub Pages Docs**: https://pages.github.com/
-- **GitHub Actions**: https://docs.github.com/actions
-- **GoDaddy DNS Help**: https://www.godaddy.com/help/
-- **DNS Checker**: https://dnschecker.org/
+**Q: What about SEO?**
+A: GitHub Pages is SEO-friendly. Ensure:
+- Proper title tags in HTML
+- Meta descriptions
+- Plain text content (not in images)
+- Proper heading hierarchy
+
+**Q: Can I use JavaScript or a backend?**
+A: GitHub Pages is static only. No server-side code. Use Formspree for form submission.
+
+## Contact Form Note
+
+The current contact.html form won't work without a backend service. To make it functional:
+
+**Option 1: Formspree (Easiest)**
+1. Go to https://formspree.io
+2. Create free account
+3. Create new form
+4. Get form ID
+5. Update form action in contact.html:
+   ```html
+   <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+   ```
+
+**Option 2: EmailJS**
+Similar to Formspree, connects to your email.
+
+**Option 3: Netlify Forms**
+Use Netlify instead of GitHub Pages (but loses some benefits).
 
 ## Summary
 
-You now have:
+✅ Create GitHub repository
+✅ Push local code to GitHub
+✅ Enable GitHub Pages
+✅ Configure custom domain on GoDaddy
+✅ Update DNS records
+✅ Wait for HTTPS certificate
+✅ Site is live!
 
-✅ Free GitHub Pages hosting
-✅ Automatic deployments on every git push
-✅ Custom GoDaddy domain setup
-✅ Free HTTPS/SSL
-✅ Version control & history
-✅ Zero ongoing costs
+**Every update:**
+- Make changes locally
+- `git push origin main`
+- Site updates automatically
 
-**Ready to deploy? Start with Step 1!**
+**Forever free!** 🎉
